@@ -46,3 +46,6 @@ SELECT pos, ROUND(AVG(g),0) AS career_games_played, ROUND(AVG(g)/17, 0) AS years
 
 -- Get the count of distinct players for each position among the selected positions (RB, QB, WR, TE)
 SELECT pos, COUNT(*) AS 'count' FROm #distinct_nfl_data WHERE pos IN ('RB', 'QB', 'WR', 'TE') GROUP BY pos ORDER BY 'count' DESC;
+
+-- Calculate the average of player contracts signed per year to see the disparity between the contract figures for each position among the selected positions to focus on (RB, QB, WR, TE)
+SELECT year_signed, pos, ROUND(AVG(value), 0) AS average FROM nfl_contracts_drafts$ WHERE pos IN ('RB', 'QB', 'WR', 'TE') GROUP BY year_signed, pos ORDER BY year_signed ASC, average DESC;
